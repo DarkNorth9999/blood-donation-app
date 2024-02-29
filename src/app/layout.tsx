@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import MainHeader from '../components/main-header/main-header';
 import "./globals.css";
+import AuthProvider from "./context/AuthProvider"
+import { useSession } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +17,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+          <MainHeader/>
+        {children}
+        </body>
     </html>
   );
 }

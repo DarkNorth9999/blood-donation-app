@@ -1,0 +1,13 @@
+.notification-card{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    align-items: center;
+    justify-content: center;
+    border:1px solid black;
+    padding: 0.2rem 0.5rem;
+    font-size: 1rem;
+}
+
+.notification-card img{
+    border-radius: 50px;
+}
