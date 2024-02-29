@@ -1,10 +1,28 @@
 .patients {
-    width: 90%;
-    max-width: 90rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-    grid-gap: 5rem;
-    margin: 2rem auto;
-    list-style: none;
-    padding: 0;
+  width: 90%;
+  max-width: 90rem;
+  display: grid;
+  /* grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); */
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 5rem;
+  margin: 2rem auto;
+  list-style: none;
+  padding: 0;
   }
+
+  @media screen and (max-width: 800px) {
+    .patients {
+      grid-template-columns: repeat(2,1fr);
+      grid-gap:3rem;
+      margin:1rem 4rem;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .patients {
+      grid-template-columns: repeat(1,1fr);
+      grid-gap:3rem;
+      margin:1rem 4rem;
+    }
+  }
+  

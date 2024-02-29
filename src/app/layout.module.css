@@ -1,0 +1,16 @@
+.whole-page{
+    font-size: 10%;
+}
+
+
+@media screen and (max-width: 800px) {
+    .whole-page{
+        font-size: 85% !important;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .whole-page{
+        font-size: 70% !important;
+    }
+  }

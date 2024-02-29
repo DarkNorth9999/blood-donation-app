@@ -1,13 +1,10 @@
 // import fs from "node:fs"
-import sql from "better-sqlite3"
 import slugify from "slugify"
 import xss from "xss"
 import cloudinary from "./cloudinaryConfig"
 import supabase from "./postgresSql"
 import { getServerSession } from "next-auth"
 import { options } from "@/app/api/auth/[...nextauth]/options"
-
-const db = sql("donor.db")
 
 export async function getDonors() {
   await new Promise((resolve) => setTimeout(resolve, 1000))
@@ -83,20 +80,6 @@ export async function saveDonor(donor) {
   // donor.donor_image = `/images/${filename}`
 
   // donor.donor_image = `${filename}`
-
-  // db.prepare(
-  //   `INSERT INTO donor
-  // (slug, donor_name, donor_image, donor_location, donor_bloodgroup, donor_details)
-  // VALUES(
-  //   @slug,
-  //   @donor_name,
-  //   @donor_image,
-  //   @donor_location,
-  //   @donor_bloodgroup,
-  //   @donor_details
-  //   )
-  // `
-  // ).run(donor)
 
   const {
     slug,

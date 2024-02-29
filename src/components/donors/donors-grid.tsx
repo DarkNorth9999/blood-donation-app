@@ -6,10 +6,16 @@ export default function DonorsGrid({donors}:{
   donors:any
 }) {
   return (
-    <ul className={classes.donors}>
-      {donors.map((donor:any)=> <li key={donor.id}>
-        <Donor {...donor} />
-      </li> )}
-    </ul>
+    <div>
+      <ul className={classes.donors}>
+        {donors.map((donor:any)=> <li key={donor.id}>
+          <Donor {...donor} />
+        </li> )}
+      </ul>
+      <div>
+        page 1 2 3
+      </div>
+    </div>
+
   )
 }

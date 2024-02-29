@@ -1,12 +1,9 @@
-import sql from "better-sqlite3"
 import slugify from "slugify"
 import xss from "xss"
 import cloudinary from "./cloudinaryConfig"
 import supabase from "./postgresSql"
 import { getServerSession } from "next-auth"
 import { options } from "@/app/api/auth/[...nextauth]/options"
-
-const db = sql("patient.db")
 
 export async function getPatients() {
   await new Promise((resolve) => setTimeout(resolve, 1000))

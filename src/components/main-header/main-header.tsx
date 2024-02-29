@@ -71,35 +71,34 @@ export default async function MainHeader() {
   return (
     <>
       <MainHeaderBackground />
-      <header className={classes.header}>
-        <Link href='/' className={classes.logo}>
+      <header className={classes['header-container']}>
+       <div className={classes.header}>
+       <Link href='/' className={classes.logo}>
           <Image src={MainLogo} alt='Donor App logo' priority></Image>
-          Blood Connect
+          <span>Blood Connect</span>
         </Link>
         <nav className={classes.nav}>
           <ul>
-            <li>
+            <li className={classes['page-options']}>
               <NavLink href='/donors'>Donors</NavLink>
             </li>
-            <li>
+            <li className={classes['page-options']}>
               <NavLink href='/patients'>Patients</NavLink>
             </li>
             {user?(
             <>
-              <li className={classes.user}>
-                
-                  <Image src={user.image as string} alt={user.name as string} width={300} height={300}/>
-                  <h4>Hello, {user.name}</h4>
-                
-              </li>
               <li>
                 <NotificationBell notifications={notifications}/>
+              </li>
+              <li className={classes.user}>
+                  <Image src={user.image as string} alt={user.name as string} width={300} height={300}/>
               </li>
             </>):(
               <button>Login In</button>
             )}
           </ul>
         </nav>
+       </div>
       </header>
     </>
   )
