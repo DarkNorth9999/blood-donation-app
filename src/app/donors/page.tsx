@@ -9,12 +9,18 @@ export const metadata = {
   description:"Browse the list of all registered donors"
 }
 
-async function Donors(){
+async function Donors({searchParams}:{
+  searchParams: { [key: string]: string | string[] | undefined }
+}){
   const donors = await getDonors();
-  return <DonorsGrid donors = {donors}></DonorsGrid>
+  return <DonorsGrid donors = {donors} searchParams={searchParams}></DonorsGrid>
 }
 
-export default function donorPage() {
+export default function donorPage({searchParams}:{
+  searchParams: { [key: string]: string | string[] | undefined }
+}) {
+
+  
 
   return (
     <>
@@ -29,7 +35,7 @@ export default function donorPage() {
       <Suspense
       fallback = {<p className={classes.loading}>fetching donor data...</p>}
       >
-        <Donors/>
+        <Donors searchParams={searchParams}/>
       </Suspense>
     </main>
     </>
