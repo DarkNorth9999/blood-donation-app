@@ -12,8 +12,8 @@ import { getServerSession } from "next-auth/next"
 import { options } from "@/app/api/auth/[...nextauth]/options"
 import NotificationBell from "./notification/notification-bell"
 import { fetchNotifications } from "@/lib/actions"
-import { signIn } from "next-auth/react"
-import LoginButton from "../AuthSession/LoginButton"
+import { signIn, signOut } from "next-auth/react"
+import HeaderUL from "../AuthSession/HeaderUL"
 
 
 export default async function MainHeader() {
@@ -80,27 +80,7 @@ export default async function MainHeader() {
           <span>Blood Connect</span>
         </Link>
         <nav className={classes.nav}>
-          <ul>
-            <li className={classes['page-options']}>
-              <NavLink href='/donors'>Donors</NavLink>
-            </li>
-            <li className={classes['page-options']}>
-              <NavLink href='/patients'>Patients</NavLink>
-            </li>
-            {user?(
-            <>
-              <li>
-                <NotificationBell notifications={notifications}/>
-              </li>
-              <li className={classes.user}>
-                  <Link href=''>
-                    <Image src={user.image as string} alt={user.name as string} width={300} height={300}/>
-                  </Link>
-              </li>
-            </>):(
-             <LoginButton/>
-            )}
-          </ul>
+          <HeaderUL user={user} notifications={notifications}/>
         </nav>
        </div>
       </header>
