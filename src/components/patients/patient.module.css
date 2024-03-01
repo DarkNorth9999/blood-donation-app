@@ -54,7 +54,7 @@
   
   .actions {
     padding: 1rem;
-    text-align: right;
+    text-align: center;
   }
   
   .actions a {
@@ -66,6 +66,7 @@
     color: #ffffff;
     font-weight: bold;
     text-decoration: none;
+    /* width: 60%; */
   }
   
   .actions a:hover,

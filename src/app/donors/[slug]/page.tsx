@@ -3,6 +3,8 @@ import classes from "./page.module.css"
 import { slugGetDonor } from "@/lib/donors"
 import Image from "next/image"
 import { notFound } from "next/navigation"
+import { checkFriendshipWithCurrentUser } from '@/lib/actions'
+import ConnectionRequest from '@/components/friend-connection/connection-request'
 
 let donorVal;
 
@@ -25,6 +27,7 @@ export async function generateMetadata({params}:{params:any}) {
 
 export default async function DonorDetailsPage({params}:{params:any}) {
     const donor = await slugGetDonor(params.slug); 
+    const friendshipStatus = await checkFriendshipWithCurrentUser(donor.userID);
 
     if(!donor) notFound();
     return (
@@ -45,7 +48,7 @@ export default async function DonorDetailsPage({params}:{params:any}) {
             <p
               className={classes.instructions}
             >{donor.donorDetails}</p>
-            <button>Connect with {donor.donorName}</button>
+           <ConnectionRequest name={donor.donorName} second_userID={donor.userID} friendshipStatus={friendshipStatus}/>
           </main>
         </>
       )
