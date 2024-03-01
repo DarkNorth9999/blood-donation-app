@@ -3,17 +3,19 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 
-import MainLogo from "@/assets/MainLogo.png"
+import MainImg1 from '@/assets/main-logo-img-1.jpg'
+import MainImg2 from '@/assets/main-logo-img-2.jpg'
+import MainImg3 from '@/assets/main-logo-img-3.jpg'
+import MainImg4 from '@/assets/main-logo-img-4.jpg'
+import MainImg5 from '@/assets/main-logo-img-5.jpg'
 import classes from "./image-slideshow.module.css"
 
 const images = [
-  { image: MainLogo, alt: "A delicious, juicy burger" },
-//   { image: curryImg, alt: "A delicious, spicy curry" },
-//   { image: dumplingsImg, alt: "Steamed dumplings" },
-//   { image: macncheeseImg, alt: "Mac and cheese" },
-//   { image: pizzaImg, alt: "A delicious pizza" },
-//   { image: schnitzelImg, alt: "A delicious schnitzel" },
-//   { image: tomatoSaladImg, alt: "A delicious tomato salad" },
+  { image: MainImg1, alt: "Children playing" },
+  { image: MainImg2, alt: "Children jumping in the air" },
+  { image: MainImg3, alt: "Children enjoying colors" },
+  { image: MainImg4, alt: "people smiling while playing" },
+  { image: MainImg5, alt: "image of economically challenged children playing" },
 ]
 
 export default function ImageSlideshow() {
