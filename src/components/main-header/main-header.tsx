@@ -12,6 +12,8 @@ import { getServerSession } from "next-auth/next"
 import { options } from "@/app/api/auth/[...nextauth]/options"
 import NotificationBell from "./notification/notification-bell"
 import { fetchNotifications } from "@/lib/actions"
+import { signIn } from "next-auth/react"
+import LoginButton from "../AuthSession/LoginButton"
 
 
 export default async function MainHeader() {
@@ -91,10 +93,12 @@ export default async function MainHeader() {
                 <NotificationBell notifications={notifications}/>
               </li>
               <li className={classes.user}>
-                  <Image src={user.image as string} alt={user.name as string} width={300} height={300}/>
+                  <Link href=''>
+                    <Image src={user.image as string} alt={user.name as string} width={300} height={300}/>
+                  </Link>
               </li>
             </>):(
-              <button>Login In</button>
+             <LoginButton/>
             )}
           </ul>
         </nav>
