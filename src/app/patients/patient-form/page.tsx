@@ -21,28 +21,28 @@ export default function PatientForm() {
         <form className={classes.form} action={formAction}>
           <div className={classes.row}>
             <p>
-              <label htmlFor="patient_name">Your name</label>
-              <input type="text" id="patient_name" name="patient_name" required />
+              <label htmlFor="patientName">Your name</label>
+              <input type="text" id="patientName" name="patientName" required />
             </p>
             <p>
-              <label htmlFor="patient_bloodgroup">Your Blood Group</label>
-              <input type="text" id="patient_bloodgroup" name="patient_bloodgroup" required />
+              <label htmlFor="patientBloodgroup">Your Blood Group</label>
+              <input type="text" id="patientBloodgroup" name="patientBloodgroup" required />
             </p>
           </div>
           <p>
-            <label htmlFor="patient_location">Patient Location</label>
-            <input type="text" id="patient_location" name="patient_location" required />
+            <label htmlFor="patientLocation">Patient Location</label>
+            <input type="text" id="patientLocation" name="patientLocation" required />
           </p>
           <p>
-            <label htmlFor="patient_details">Patient Details</label>
+            <label htmlFor="patientDetails">Patient Details</label>
             <textarea
-              id="patient_details"
-              name="patient_details"
+              id="patientDetails"
+              name="patientDetails"
               rows={10}
               required
             ></textarea>
           </p>
-          <ImagePicker label="patient_image" name="patient_image"/>
+          <ImagePicker label="patientImage" name="patientImage"/>
           {state.message && <p>{state.message}</p>}
           <p className={classes.actions}>
             <PatientsFormSubmit/>

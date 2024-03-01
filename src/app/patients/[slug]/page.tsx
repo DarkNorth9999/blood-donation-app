@@ -20,8 +20,8 @@ export async function generateMetadata({params}:{params:any}) {
       notFound()
     }
     return {
-      patient_name: patient.patient_name,
-      description: patient.patient_details,
+      patientName: patient.patientName,
+      description: patient.patientDetails,
     }
 }
 
@@ -31,7 +31,7 @@ export default async function PatientDetailsPage({params}:{params:any}) {
     const patient = await slugGetPatient(params.slug);
     if(!patient) notFound();
 
-    const friendshipStatus = await checkFriendshipWithCurrentUser(patient.user_id);
+    const friendshipStatus = await checkFriendshipWithCurrentUser(patient.userID);
 
     const session = await getServerSession(options)
     if(session==null){
@@ -44,26 +44,23 @@ export default async function PatientDetailsPage({params}:{params:any}) {
         <>
           <header className={classes.header}>
             <div className={classes.image}>
-              <Image src={patient.patient_image} alt={patient.patient_name} fill />
+              <Image src={patient.patientImage} alt={patient.patientName} fill />
             </div>
             <div className={classes.headerText}>
-              <h1>{patient.patient_name}</h1>
+              <h1>{patient.patientName}</h1>
               <p className={classes.creator}>
-                 <a href={`#`}>{patient.patient_location}</a>
+                 <a href={`#`}>{patient.patientLocation}</a>
               </p>
-              <p className={classes.summary}>Blood Group: {patient.patient_bloodgroup}</p>
+              <p className={classes.summary}>Blood Group: {patient.patientBloodgroup}</p>
             </div>
           </header>
           <main>
             <p
               className={classes.instructions}
-              dangerouslySetInnerHTML={{
-                __html: patient.patient_details,
-              }}
-            ></p>
+            >{patient.patientDetails}</p>
 
              
-              <ConnectionRequest name={patient.patient_name} second_user_id={patient.user_id} friendshipStatus={friendshipStatus}/>
+              <ConnectionRequest name={patient.patientName} second_userID={patient.userID} friendshipStatus={friendshipStatus}/>
            
           </main>
         </>

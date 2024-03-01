@@ -5,7 +5,7 @@ import supabase from "./postgresSql"
 import { getServerSession } from "next-auth"
 import { options } from "@/app/api/auth/[...nextauth]/options"
 
-export async function getPatients() {
+export async function getPatients(name, bloodgroup, location) {
   await new Promise((resolve) => setTimeout(resolve, 1000))
 
   const { data, error } = await supabase.from("patient").select()
@@ -38,13 +38,13 @@ export async function slugGetPatient(slug) {
 
 /******* Saving Patient Info in DB and Image in Cloudinary *******/
 export async function savePatient(patient) {
-  patient.slug = slugify(patient.patient_name, { lower: true })
-  patient.details = xss(patient.patient_details)
+  patient.slug = slugify(patient.patientName, { lower: true })
+  patient.details = xss(patient.patientDetails)
 
-  const extension = patient.patient_image.name.split(".").pop()
+  const extension = patient.patientImage.name.split(".").pop()
   const filename = `${patient.slug}.${extension}`
 
-  const bufferedImage = await patient.patient_image.arrayBuffer()
+  const bufferedImage = await patient.patientImage.arrayBuffer()
   const buffer = new Uint8Array(bufferedImage)
 
   await new Promise((resolve, reject) => {
@@ -68,42 +68,42 @@ export async function savePatient(patient) {
     context: true,
   })
 
-  patient.patient_image = ImageObj.resources[0].secure_url
+  patient.patientImage = ImageObj.resources[0].secure_url
 
   // db.prepare(
   //   `INSERT INTO patient
-  // (slug, patient_name, patient_image, patient_location, patient_bloodgroup, patient_details)
+  // (slug, patientName, patientImage, patientLocation, patientBloodgroup, patientDetails)
   // VALUES(
   //   @slug,
-  //   @patient_name,
-  //   @patient_image,
-  //   @patient_location,
-  //   @patient_bloodgroup,
-  //   @patient_details
+  //   @patientName,
+  //   @patientImage,
+  //   @patientLocation,
+  //   @patientBloodgroup,
+  //   @patientDetails
   //   )
   // `
   // ).run(patient)
   const session = await getServerSession(options)
-  const user_id = session?.user?.accessToken
+  const userID = session?.user?.accessToken
 
   const {
     slug,
-    patient_name,
-    patient_image,
-    patient_location,
-    patient_bloodgroup,
-    patient_details,
+    patientName,
+    patientImage,
+    patientLocation,
+    patientBloodgroup,
+    patientDetails,
   } = patient
 
   const { data, error } = await supabase.from("patient").insert([
     {
-      user_id,
+      userID,
       slug,
-      patient_name,
-      patient_image,
-      patient_location,
-      patient_bloodgroup,
-      patient_details,
+      patientName,
+      patientImage,
+      patientLocation,
+      patientBloodgroup,
+      patientDetails,
     },
   ])
 

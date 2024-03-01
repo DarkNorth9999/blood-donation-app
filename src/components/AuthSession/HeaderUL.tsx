@@ -28,7 +28,7 @@ export default function HeaderUL({user, notifications}) {
                   </Link>
               </li>
             </>):(
-             <button onClick={async ()=>
+             <button className={classes['login-button']} onClick={async ()=>
               signIn('google',{callbackUrl:'/'})
             }>Login In</button>
             )}

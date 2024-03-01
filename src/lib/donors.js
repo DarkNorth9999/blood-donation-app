@@ -6,7 +6,7 @@ import supabase from "./postgresSql"
 import { getServerSession } from "next-auth"
 import { options } from "@/app/api/auth/[...nextauth]/options"
 
-export async function getDonors() {
+export async function getDonors(name, blooggroup, location) {
   await new Promise((resolve) => setTimeout(resolve, 1000))
 
   const { data, error } = await supabase.from("donor").select()
@@ -36,14 +36,14 @@ export async function slugGetDonor(slug) {
 
 /******* Saving Donors Info in DB and Image in Cloudinary *******/
 export async function saveDonor(donor) {
-  donor.slug = slugify(donor.donor_name, { lower: true })
-  donor.details = xss(donor.donor_details)
+  donor.slug = slugify(donor.donorName, { lower: true })
+  donor.details = xss(donor.donorDetails)
 
-  const extension = donor.donor_image.name.split(".").pop()
+  const extension = donor.donorImage.name.split(".").pop()
   const filename = `${donor.slug}.${extension}`
 
   // const stream = fs.createWriteStream(`public/images/${filename}`)
-  const bufferedImage = await donor.donor_image.arrayBuffer()
+  const bufferedImage = await donor.donorImage.arrayBuffer()
   const buffer = new Uint8Array(bufferedImage)
 
   await new Promise((resolve, reject) => {
@@ -67,9 +67,9 @@ export async function saveDonor(donor) {
     context: true,
   })
 
-  donor.donor_image = ImageObj.resources[0].secure_url
+  donor.donorImage = ImageObj.resources[0].secure_url
   // console.log("This is donor image object: ", ImageObj)
-  // console.log("This is donor's image: ", donor.donor_image)
+  // console.log("This is donor's image: ", donor.donorImage)
 
   //await cloudinary.api.resources_by_tag('blood-donation-app')
 
@@ -77,31 +77,31 @@ export async function saveDonor(donor) {
   //   if (error) throw new Error("Saving Image Failed!")
   // })
 
-  // donor.donor_image = `/images/${filename}`
+  // donor.donorImage = `/images/${filename}`
 
-  // donor.donor_image = `${filename}`
+  // donor.donorImage = `${filename}`
 
   const {
     slug,
-    donor_name,
-    donor_image,
-    donor_location,
-    donor_bloodgroup,
-    donor_details,
+    donorName,
+    donorImage,
+    donorLocation,
+    donorBloodgroup,
+    donorDetails,
   } = donor
 
   const session = await getServerSession(options)
-  const user_id = session?.user?.accessToken
+  const userID = session?.user?.accessToken
 
   const { data, error } = await supabase.from("donor").insert([
     {
       slug,
-      user_id,
-      donor_name,
-      donor_image,
-      donor_location,
-      donor_bloodgroup,
-      donor_details,
+      userID,
+      donorName,
+      donorImage,
+      donorLocation,
+      donorBloodgroup,
+      donorDetails,
     },
   ])
 

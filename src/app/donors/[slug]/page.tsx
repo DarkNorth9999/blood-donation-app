@@ -18,8 +18,8 @@ export async function generateMetadata({params}:{params:any}) {
       notFound()
     }
     return {
-      donor_name: donor.donor_name,
-      description: donor.donor_details,
+      donorName: donor.donorName,
+      description: donor.donorDetails,
     }
   }
 
@@ -31,21 +31,21 @@ export default async function DonorDetailsPage({params}:{params:any}) {
         <>
           <header className={classes.header}>
             <div className={classes.image}>
-              <Image src={donor.donor_image} alt={donor.donor_name} fill />
+              <Image src={donor.donorImage} alt={donor.donorName} fill />
             </div>
             <div className={classes.headerText}>
-              <h1>{donor.donor_name}</h1>
+              <h1>{donor.donorName}</h1>
               <p className={classes.creator}>
-                 <a href={`#`}>{donor.donor_location}</a>
+                 <a href={`#`}>{donor.donorLocation}</a>
               </p>
-              <p className={classes.summary}>Blood Group: {donor.donor_bloodgroup}</p>
+              <p className={classes.summary}>Blood Group: {donor.donorBloodgroup}</p>
             </div>
           </header>
           <main>
             <p
               className={classes.instructions}
-            >{donor.donor_details}</p>
-            <button>Connect with {donor.donor_name}</button>
+            >{donor.donorDetails}</p>
+            <button>Connect with {donor.donorName}</button>
           </main>
         </>
       )

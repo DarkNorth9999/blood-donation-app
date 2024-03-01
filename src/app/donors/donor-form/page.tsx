@@ -21,28 +21,28 @@ export default function DonorForm() {
         <form className={classes.form} action={formAction}>
           <div className={classes.row}>
             <p>
-              <label htmlFor="donor_name">Your name</label>
-              <input type="text" id="donor_name" name="donor_name" required />
+              <label htmlFor="donorName">Your name</label>
+              <input type="text" id="donorName" name="donorName" required />
             </p>
             <p>
-              <label htmlFor="donor_bloodgroup">Your Blood Group</label>
-              <input type="text" id="donor_bloodgroup" name="donor_bloodgroup" required />
+              <label htmlFor="donorBloodgroup">Your Blood Group</label>
+              <input type="text" id="donorBloodgroup" name="donorBloodgroup" required />
             </p>
           </div>
           <p>
-            <label htmlFor="donor_location">Donor Location</label>
-            <input type="text" id="donor_location" name="donor_location" required />
+            <label htmlFor="donorLocation">Donor Location</label>
+            <input type="text" id="donorLocation" name="donorLocation" required />
           </p>
           <p>
-            <label htmlFor="donor_details">Donor Details</label>
+            <label htmlFor="donorDetails">Donor Details</label>
             <textarea
-              id="donor_details"
-              name="donor_details"
+              id="donorDetails"
+              name="donorDetails"
               rows={10}
               required
             ></textarea>
           </p>
-          <ImagePicker label="donor_image" name="donor_image"/>
+          <ImagePicker label="donorImage" name="donorImage"/>
           {state.message && <p>{state.message}</p>}
           <p className={classes.actions}>
             <DonorsFormSubmit/>

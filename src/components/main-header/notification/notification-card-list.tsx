@@ -7,8 +7,8 @@ import { NotificationType } from '@/components/enums/notificationType';
 
 // const notifications:any[] =[
 //   {
-//     notification_id:'1',
-//     notification_type:'notification',
+//     notificationID:'1',
+//     notificationType:'notification',
 //     notification_from:'115092327438146919815',
 //     sender_image:'https://lh3.googleusercontent.com/a/ACg8ocKd5S8SB5Ho7HuwKN1WNi4-cCUeFOWZJXYG_3IHhpYzJHM=s96-c',
 //     notification_to:'',
@@ -16,8 +16,8 @@ import { NotificationType } from '@/components/enums/notificationType';
 //     notification_message_body:'Replace this with senders message'
 //   },
 //   {
-//     notification_id:'2',
-//     notification_type:'connection',
+//     notificationID:'2',
+//     notificationType:'connection',
 //     notification_from:'115092327438146919815',
 //     sender_image:'https://lh3.googleusercontent.com/a/ACg8ocKd5S8SB5Ho7HuwKN1WNi4-cCUeFOWZJXYG_3IHhpYzJHM=s96-c',
 //     notification_to:'',
@@ -25,8 +25,8 @@ import { NotificationType } from '@/components/enums/notificationType';
 //     notification_message_body:'Replace this with senders message'
 //   },
 //   {
-//     notification_id:'3',
-//     notification_type:'notification',
+//     notificationID:'3',
+//     notificationType:'notification',
 //     notification_from:'115092327438146919815',
 //     sender_image:'https://lh3.googleusercontent.com/a/ACg8ocKd5S8SB5Ho7HuwKN1WNi4-cCUeFOWZJXYG_3IHhpYzJHM=s96-c',
 //     notification_to:'',
@@ -34,8 +34,8 @@ import { NotificationType } from '@/components/enums/notificationType';
 //     notification_message_body:'New Update!'
 //   },
 //   {
-//     notification_id:'4',
-//     notification_type:'connection',
+//     notificationID:'4',
+//     notificationType:'connection',
 //     notification_from:'115092327438146919815',
 //     sender_image:'https://lh3.googleusercontent.com/a/ACg8ocKd5S8SB5Ho7HuwKN1WNi4-cCUeFOWZJXYG_3IHhpYzJHM=s96-c',
 //     notification_to:'',
@@ -49,8 +49,8 @@ export default function NotificationCardList({type, notifications}:{type:Notific
   return (
     <ul className={classes['notification-card-list']}>
             {notifications && notifications.map((notification:any)=>{
-                if(notification.notification_type === type){
-                    return <li key={notification.notification_id}>
+                if(notification.notificationType === type){
+                    return <li key={notification.notificationID}>
                      <NotificationCard notification = {notification} />
                     </li>
                 }

@@ -3,13 +3,13 @@ import Link from "next/link"
 import React from "react"
 import classes from './patient.module.css'
 
-export default function Patient({ patient_name, slug, patient_image, patient_location, patient_bloodgroup, patient_details }:{
-  patient_name:any, 
+export default function Patient({ patientName, slug, patientImage, patientLocation, patientBloodgroup, patientDetails }:{
+  patientName:any, 
   slug:any, 
-  patient_image:any, 
-  patient_location:any, 
-  patient_bloodgroup:any, 
-  patient_details:any
+  patientImage:any, 
+  patientLocation:any, 
+  patientBloodgroup:any, 
+  patientDetails:any
 }) {
 
   
@@ -17,17 +17,17 @@ export default function Patient({ patient_name, slug, patient_image, patient_loc
         <article className={classes.patient}>
           <header>
             <div className={classes.image}>
-              <Image src={patient_image} alt={patient_name} fill />
+              <Image src={patientImage} alt={patientName} fill />
               {/* nextjs will fill the space based on its parent components */}
             </div>
             <div className={classes.headerText}>
-              <h2>{patient_name}</h2>
-              <h3>Blood Group: {patient_bloodgroup}</h3>
-              <p>{patient_location}</p>
+              <h2>{patientName}</h2>
+              <h3>Blood Group: {patientBloodgroup}</h3>
+              <p>{patientLocation}</p>
             </div>
           </header>
           <div className={classes.content}>
-            <p className={classes.summary}>{patient_details}</p>
+            <p className={classes.summary}>{patientDetails}</p>
             <div className={classes.actions}>
               <Link href={`/patients/${slug}`}>View Details</Link>
             </div>

@@ -1,0 +1,17 @@
+.searchForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#DDD6CB;
+    gap:1rem;
+}
+
+@media screen and (max-width: 800px) {
+    .searchForm{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color:#DDD6CB;
+    }
+  }

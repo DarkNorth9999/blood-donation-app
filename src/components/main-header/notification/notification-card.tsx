@@ -16,7 +16,7 @@ export default function NotificationCard({notification}:{notification:any}) {
   useEffect(()=>{
     if(notification){
       const fetchStatus = async () => {
-        const currStatus = await fetchNotificationStatus(notification.notification_id)
+        const currStatus = await fetchNotificationStatus(notification.notificationID)
         setStatus(currStatus);
       }
   
@@ -31,7 +31,7 @@ export default function NotificationCard({notification}:{notification:any}) {
     <div>
     <h3>{notification.notification_message_header} {status==NotificationStatus.UNOPENED?'Unopened':'SEEN'}</h3>
     <p>{notification.notification_message_body}</p>
-    {notification.notification_type===NotificationType.CONNECTION && (connectionCta === '') && 
+    {notification.notificationType===NotificationType.CONNECTION && (connectionCta === '') && 
     <div>
 
        <button onClick={()=>{

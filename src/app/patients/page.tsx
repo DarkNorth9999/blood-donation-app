@@ -3,21 +3,28 @@ import Link from 'next/link'
 import React, { Suspense } from 'react'
 import {getPatients} from '../../lib/patients'
 import classes from './pages.module.css'
+import SearchOptions from '@/components/search-options/search-options';
+
 
 export const metadata = {
   title:"All Patients",
   description:"Browse the list of all registered patients"
 }
 
-async function Patients(){
+async function Patients({searchParams}:{
+  searchParams: { [key: string]: string | string[] | undefined }
+}){
   const patients = await getPatients();
-  return <PatientsGrid patients={patients}></PatientsGrid>
+  return <PatientsGrid patients={patients} searchParams={searchParams}></PatientsGrid>
 }
 
-export default function patientPage() {
+export default function patientPage({searchParams}:{
+  searchParams: { [key: string]: string | string[] | undefined }
+}) {
   
   return (
     <>
+    <SearchOptions pageName={'patients'}/>
     <header className={classes.header}>
       <h1>Become their <span className={classes.highlight}>Savior</span></h1>
       <p>Your donation can save lives</p>
@@ -29,7 +36,7 @@ export default function patientPage() {
       <Suspense
       fallback = {<p className={classes.loading}>fetching patient data...</p>}
       >
-        <Patients/>
+        <Patients searchParams={searchParams}/>
       </Suspense>
     </main>
     </>
