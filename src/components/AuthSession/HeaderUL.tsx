@@ -32,6 +32,7 @@ export default function HeaderUL({user, notifications}) {
               signIn('google',{callbackUrl:'/'})
             }>Login In</button>
             )}
+            
         </ul>
   )
 }

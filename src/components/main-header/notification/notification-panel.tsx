@@ -19,14 +19,14 @@ export default function NotificationPanel({notifications}) {
   }
 
   return (     
-
+      <div className={classes['rounded-div']}>
       <div className={classes['notification-panel']}>
 
-        <h1>NotificationPanel</h1>
+        <div className='flex justify-center bg-slate-600 mb-3'><h1 className='text-center'>NotificationPanel</h1></div>
         
-        <div>
-        <button onClick={()=>toggleBells(bellOptions.notification)}>Notifications</button>
-        <button onClick={()=>toggleBells(bellOptions.connection)}>Connection Requests</button>
+        <div className={'flex justify-center gap-3 mb-2'}>
+        <button className=' bg-slate-500 pl-1 pr-1' onClick={()=>toggleBells(bellOptions.notification)}>Notifications</button>
+        <button className=' bg-slate-500 pl-1 pr-1' onClick={()=>toggleBells(bellOptions.connection)}>Connection Requests</button>
         </div>
 
         <div>
@@ -34,6 +34,7 @@ export default function NotificationPanel({notifications}) {
           { bell == bellOptions.connection && <NotificationCardList notifications={notifications} type={NotificationType.CONNECTION}/>}
         </div>
 
+      </div>
       </div>
     
   )

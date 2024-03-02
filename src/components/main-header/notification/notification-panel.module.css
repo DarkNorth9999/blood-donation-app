@@ -2,7 +2,7 @@
     position: absolute;
     bottom:-25.2rem; /* .2rem to give some gap between bell and panel */
     left:-23.125rem; /* 1.875 less cause width of bell */
-    background-color:white;
+    background-color:#b8b0a4;
     width: 25rem;
     height:25rem;
     display: flex;
@@ -12,7 +12,12 @@
 }
 
 .notification-panel h1{
-    align-self: flex-start;
-    padding: 0.5rem 0 1rem 3rem;
+    padding: 0.5rem 3rem 1rem 3rem;
+    z-index:3;
 }
+
+/* .rounded-div{
+    border-radius: 100px;
+    z-index: 5;
+} */
 

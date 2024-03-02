@@ -24,6 +24,12 @@ const nextConfig = {
         port: "",
         pathname: "/a/**",
       },
+      {
+        protocol: "https",
+        hostname: "mighty.tools",
+        port: "",
+        pathname: "/mockmind-api/**",
+      },
     ],
   },
 }

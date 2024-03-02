@@ -95,8 +95,8 @@ export async function saveDonor(donor) {
 
   const { data, error } = await supabase.from("donor").insert([
     {
-      slug,
       userID,
+      slug,
       donorName,
       donorImage,
       donorLocation,
@@ -106,6 +106,7 @@ export async function saveDonor(donor) {
   ])
 
   if (error) {
+    console.log("this is the error", error)
     throw new Error("Failed to add record")
   }
 

@@ -32,9 +32,9 @@ export default function NotificationCard({notification}:{notification:any}) {
     <h3>{notification.notification_message_header} {status==NotificationStatus.UNOPENED?'Unopened':'SEEN'}</h3>
     <p>{notification.notification_message_body}</p>
     {notification.notificationType===NotificationType.CONNECTION && (connectionCta === '') && 
-    <div>
+    <div className='flex gap-2 pl-14 items-center'>
 
-       <button onClick={()=>{
+       <button className='bg-slate-400 pl-2 pr-2 rounded-full' onClick={()=>{
         const acceptReq = async ()=>{
           await acceptConnectionRequest(notification.notification_to, notification.notification_from);
         } 
@@ -44,7 +44,7 @@ export default function NotificationCard({notification}:{notification:any}) {
         
        }}>Accept</button>
 
-        <button onClick={async ()=>{
+        <button className='bg-slate-400 pl-2 pr-2 rounded-full' onClick={async ()=>{
         await rejectConnectionRequest();
        }}>Reject</button> 
 
